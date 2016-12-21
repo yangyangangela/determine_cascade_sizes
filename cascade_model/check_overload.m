@@ -15,8 +15,8 @@ BR_STATUS = 11;
 Pmax = results.branch(:,6);%short term rating
 PF = abs(results.branch(:,14));%power flow on the line
 
-% within alpah% Pmax are overloaded lines
-Pd = PF - (1 - alpha) * Pmax;
+% lines with flow reaching (1-alpha)*Pmax are overloaded lines
+Pd = PF - (1-alpha)*Pmax;
 overload_line = find(Pd>0);
 
 % dont't count burned lines twice

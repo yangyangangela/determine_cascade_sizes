@@ -47,16 +47,16 @@ if dispon == 1;
     disp(num2str(blck_info.origin));
     
     disp('Total load request this time: ');
-    disp(num2str(blck_info.load_rq.TOTAL));
+    disp(num2str(blck_info.load_rq));
     
     disp('Total load delivered this time: ');
-    disp(num2str(blck_info.load_dl.TOTAL));
+    disp(num2str(blck_info.load_dl));
     
     disp('Total load shed percentage this time:');
-    disp(num2str(blck_info.loadshed.TOTAL));
+    disp(num2str(blck_info.loadshed));
 
     disp('Total line outage number (including the initial failures): ');
-    disp(num2str(blck_info.lineout.TOTAL));
+    disp(num2str(blck_info.lineout));
 
 end
 

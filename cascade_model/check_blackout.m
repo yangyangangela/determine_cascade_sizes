@@ -19,10 +19,12 @@ RATE_A = 6;
 %%
 
 % power request = inital non-isolated power
-blck_info.load_rq.TOTAL = abs(sum(rrmpc.bus(rrmpc.bus(:,2)~=4,3)));% total power request
+%blck_info.load_rq.TOTAL = abs(sum(rrmpc.bus(rrmpc.bus(:,2)~=4,3)));% total power request
+blck_info.load_rq = abs(sum(rrmpc.bus(rrmpc.bus(:,2)~=4,3)));% total power request
 
 % number of lineoutages;
-blck_info.lineout.TOTAL = length(find(Outlines==0));
+%blck_info.lineout.TOTAL = length(find(Outlines==0));
+blck_info.lineout = length(find(Outlines==0));
 
 
 %%
@@ -60,9 +62,14 @@ end
 dslack = nslack - oslack;
 
 % total load shed (in MW)
-blck_info.dslack.TOTAL = dslack;
-blck_info.load_dl.TOTAL = sum(results.bus(results.bus(:,2)~=4,3));
-blck_info.loadshed.TOTAL = 1 - blck_info.load_dl.TOTAL/blck_info.load_rq.TOTAL;
+%blck_info.dslack.TOTAL = dslack;
+%blck_info.load_dl.TOTAL = sum(results.bus(results.bus(:,2)~=4,3));
+%blck_info.loadshed.TOTAL = 1 - blck_info.load_dl.TOTAL/blck_info.load_rq.TOTAL;
+blck_info.dslack= dslack;
+blck_info.load_dl = sum(results.bus(results.bus(:,2)~=4,3));
+blck_info.loadshed = 1 - blck_info.load_dl/blck_info.load_rq;
+
+
 
 % initial triggering status
 if nargin > 1

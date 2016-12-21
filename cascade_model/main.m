@@ -66,7 +66,7 @@ DON = 1; DOFF = 0;
 for tt = 1 : nt
     disp(strcat('=== test #',num2str(tt),' ==='));
     [results, inovl, inOl, inld, trig_origin,Outlines,Proc,Proc_time,rrmpc]...
-        = Cascade(sqr, dr, p, alpha,DOFF,rmpc,ntrig,Tinner_branch,branch_comm,TStrategy,tnc);
+        = Cascade(sqr, dr, DOFF,rmpc,ntrig,Tinner_branch,branch_comm,TStrategy,tnc);
     blck_info = ...
         check_blackout(results,inovl,trig_origin,Outlines,Proc,Proc_time,rrmpc);
     CasRes(tt) = record_cascade_res(blck_info,DON);

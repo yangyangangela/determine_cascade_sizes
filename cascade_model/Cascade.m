@@ -1,4 +1,4 @@
-function [results, inovl, inOl, inld, trig_origin, Outlines, Proc, Proc_time, rrmpc] = Cascade(sqr, dr, p, alpha,dispon,rmpc,ntrig,Tinner_branch,branch_comm,TStrategy,tnc)
+function [results, inovl, inOl, inld, trig_origin, Outlines, Proc, Proc_time, rrmpc] = Cascade(sqr, dr, dispon,rmpc,ntrig,Tinner_branch,branch_comm,TStrategy,tnc)
 % Start from an initial power grid, propogate cascade until no transmission
 % lines will be triggered. Return the final power grid structure mpc.
 %
@@ -6,8 +6,6 @@ function [results, inovl, inOl, inld, trig_origin, Outlines, Proc, Proc_time, rr
 %   sqr: the ratio squeeze the line capacity
 %   ir: the ratio increase or decrease the interdependency
 %   dr: the ratio to tune the total load demand.
-%   p: Probability to cut off the overheated line
-%   alpha:
 %   dispon: display the general info or not.
 %   rmpc: matpower data
 %   ntrig: number of triggers
@@ -51,10 +49,11 @@ Outlines(inOl==0) = 0;
 nl = length(mpc.branch);
 T0 = zeros(nl,1);
 
-% initiate the burned line sequence
+% initiate the burned line sequence (outage sequence)
 Proc = spalloc(1,nl,floor(0.1*nl));
 
-% record the time (scaled by some constant) between each trip
+% record the time span (scaled by some constant) between two consecutive
+% outages
 Proc_time = spalloc(1,nl,floor(0.1*nl));
 
 % calculate the power flow
@@ -74,18 +73,18 @@ results = rundcpf(mpc,mpopt);
 RATE_A = 6;
 PF = 14;
 
-% make sure all lines within 95% of Rate_A
+% make sure all lines are within 95% of Rate_A
 ovl = check_overload(results, 0.05);
 mpc.branch(ovl, RATE_A) = abs(results.branch(ovl,PF))* 1.06;
 results = rundcpf(mpc,mpopt);
 
-% copy the data before cascade, under given topology
+% copy the data before cascade, under the given topology
 rrmpc = results;
 
 
 %% check inital power flow result overloaded lines, it should have no initial
 % overload.
-ovl = check_overload(results, alpha);
+ovl = check_overload(results,0);
 inovl = ovl;
 tload_dl = sum(results.gen(results.gen(:,2)>0,2));
 
@@ -124,7 +123,7 @@ while (~isempty(ovl) > 0 && tload_dl > 0 && flag ==1) || t==1
     results = rundcpf(mpc,mpopt);
      
     % check and print out the overload line indices
-    ovl = check_overload(results,alpha);
+    ovl = check_overload(results,0);
     
     [mpc, T0, flag, Outlines,Proc,proctime] = propg_cascade_v2(results,ovl,T0,Outlines,Proc,dispon);
     Proc_time(t) = proctime;

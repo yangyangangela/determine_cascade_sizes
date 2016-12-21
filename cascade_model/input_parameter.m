@@ -17,12 +17,6 @@ dr = 1;% default = 1
 % squeeze the transmission capacity by multiplying a constant
 sqr = 1;% default = 1
 
-% the cut-off probability when one line is overheated
-% p = 1;% default = 1 (do not use p in the current version)
-
-% when line flow reach the (1-alpha)*Pmax, consider to be overheated.
-% must be zero in this model
-alpha = 0;% default = 0
 
 
 %% Advanced setting: triggering strategy 
