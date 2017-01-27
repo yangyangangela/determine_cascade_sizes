@@ -35,8 +35,6 @@ Interpreting results
 
 The results file has the following Matlab variables:
 
-nt: the number of cascade realizations simulated
-
 CasRes: a vector of struct variables of length nt, each corresponding to a single cascade realization and with the following fields:
 
   power_rq: struct with field TOTAL (initial power demand, in MW)
@@ -54,5 +52,41 @@ CasRes: a vector of struct variables of length nt, each corresponding to a singl
   process: ordered sequence of the indices of line outages in the cascade
 
   proctime: the time separation between two consecutive failures, it has the same length as process and the first ntrigger numbers are zero.
+
+
+GenInfo: general information of the power grid system
+
+  ng: number of generators
+
+  nl: number of lines
+
+  nInOutline: number of lines not-in-service before any simulations
+
+  tload_in: total load in the initial steady state (in MW)
+
+  tgencap: total power capacity of all generators (in MW)
+
+  init_mpc: initial matpower struct before any bugs fixed
+
+
+OtherInfo: other information on the set up of simulation
+
+  nt: total number of cascade events
+
+  ntrig: number of lines selected as trigger in a single event
+
+  sqr: squeezing ratio to adjust the capacity of lines. Example: sqr=1 means that all lines have the original capacity.
+
+  dr: demand ratio. Example: dr=1 means to keep demand as the original demand.
+
+  tnc: the group of lines where trigger are selected. For advance setting, the tnc should be changed along with TStrategy in prepare_branch_data.m.
+   
+  TStrategy: index indicating the triggering strategy (advanced setting)
+
+  Tinner_branch: Advance setting with tnc and TStrategy. See prepare_branch_data.m
+
+  init_mpc: the intial matpower structure right before the simulation of cascade starts.
+
+
 
 (See record_cascade_res.m for more details) 
