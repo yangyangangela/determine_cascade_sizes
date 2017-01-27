@@ -27,7 +27,7 @@ How to use
 
 4) Run main.m. (Warning: This will clear all the global variables and the command window.) 
 
-5) The results will be automatically saved in a .mat file under in a folder (whose name matches that of the network data file) under the folder ./results.  For example, the result file name would be case3375wp_ntrg3_dr1_1219_2319.mat, where case3375wp.mat or case3375wp.m is the data file name, ntrg3 indicates that the total number of initial triggers is 3, dr1 indicates that the demand ratio is the same as the original data, and 1219_2319 is a date/time stamp (MMDD_HHMM). 
+5) The results will be automatically saved in a .mat file under in a folder (whose name corresponds that of the network data file and indicates the parameters used) under the folder ./results.  For example, the result file name would be case3375wp_ntrg3_dr1_1219_2319.mat, where case3375wp.mat or case3375wp.m is the data file name, ntrg3 indicates that the total number of initial triggers is 3, dr1 indicates that the demand ratio is the same as the original data, and 1219_2319 is a date/time stamp (MMDD_HHMM). 
 
 
 Interpreting results
@@ -37,19 +37,19 @@ The results file has the following Matlab variables:
 
 nt: the number of cascade realizations simulated
 
-CasRes: a vector of struct variables of length nt, each corresponding to a single cascade realization and with the following fields:
+CasRes: a vector of struct variables of length nt, with each component corresponding to a single cascade realization and with the following fields:
 
-  power_rq: struct with field TOTAL (initial power demand, in MW)
+  power_rq: initial power demand (MW)
 
-  power_del: struct with field TOTAL (total power delivered at the end of the cascade, in MW)
+  power_del: total power delivered at the end of the cascade (MW)
 
-  power_shed: struct with field TOTAL (total power shed at the end of the cascade, in MW)
+  power_shed: total power shed at the end of the cascade (MW)
 
-  slackchange: struct with field TOTAL (changes in the total power output of the slack busses)
+  slackchange: changes in the total power output of the slack busses
 
-  origin: ntrigger-by-1 vector, the indices of the initial triggers (i.e., the initial line failures)
+  origin: ntrigger-by-1 vector of the indices for the initial triggers (i.e., the initial line failures)
 
-  line_out: scalar, number of line outages at the end of the cascade (including the initial failures)
+  line_out: number of line outages at the end of the cascade (including the initial failures)
 
   process: ordered sequence of the indices of line outages in the cascade
 
