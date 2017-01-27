@@ -8,7 +8,7 @@ global ntrig;
 ntrig = 3;
 
 % total number of tests
-nt = 3;
+nt = 20;
 
 % power demand ratio for adjusting power total power demand
 %  dr = (new total power demand) / (original total power demand)

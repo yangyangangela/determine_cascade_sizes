@@ -17,7 +17,7 @@ src: contains maximalCliques.m, a Matlab function to find maximal cliques using 
 How to use
 ——————————
 
-detect_co_sus_group.m: This file defines a function that takes a correlation matrix as the input and outputs the identified groups of co-susceptible components.
+detect_co_sus_group.m: This file defines a function that takes a correlation matrix as input and outputs the identified groups of co-susceptible components.
 
   Usage: [CoGroup, G0] = detect_co_sus_group(C, den_thresh, corr_thresh)
 
@@ -29,11 +29,12 @@ detect_co_sus_group.m: This file defines a function that takes a correlation mat
 
   Output:
     CoGroup: matrix defining the co-susceptible groups; CoGroup(i,j) = 1 if
-        component j belongs group i.
+        component j belongs group i.  Note that the function does not check
+        if the group sizes are >= 3.
     G0: auxillary graph G_0; G(i,j) = 1 if C(i,j)> corr_thresh
 
 
-display_results.m: The function in this file takes the output from detect_co_sus_group and print out the group on the command line as well as visualize the correlation matrix C after re-indexing based on the identified groups.
+display_results.m: The function in this file takes the output from detect_co_sus_group and prints out the group on the command line as well as visualize the correlation matrix C after re-indexing based on the identified groups.
 
   Usage: display_results(CoGroup, C)
 

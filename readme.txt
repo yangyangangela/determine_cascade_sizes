@@ -25,10 +25,17 @@ The full text of the GNU General Public License can be found in the file
 Folders
 ———————
 
-The following folders include the code used for simulations described in the paper “Vulnerability and co-susceptibility determine cascade size” by Yang Yang, Takashi Nishikawa, and Adilson Motter.
+The code used for simulations described in the paper
 
-1) cascade_model: simulation of the iterative physical cascade model based on DC power flow calculation.
+Yang Yang, Takashi Nishikawa, and Adilson Motter
+Vulnerability and Cosusceptibility Determine the Size of Network Cascades
+Phys. Rev. Lett. 118, 048301 (2017)
+http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.118.048301
+
+is included in the following folders:
+
+1) cascade_model: simulation of the iterative physical cascade model based on DC power flow calculations.
 
 2) co_susceptible_groups: algorithm for identifying co-susceptible groups for a given correlation matrix. 
 
-For instructions on how to use them, see the readme.txt in the corresponding folders.
+For instructions on how to use them, see readme.txt in the corresponding folders.

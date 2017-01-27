@@ -4,7 +4,7 @@ function init_data(nt,rmpc)
 % nt: number of tests
 % Complete the following tasks
 % 1) calculate some basic properties
-% 2) initiate the data structure to save data
+% 2) initialize the data structure to save data
 
 global CasRes;% struct used to store cascade result
 global GenInfo; % struct: store the general information about the data before doing any interdependency manipulation
