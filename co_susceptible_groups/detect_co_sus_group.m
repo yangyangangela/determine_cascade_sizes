@@ -7,7 +7,8 @@ function [CoGroup G0] = detect_co_sus_group(C, den_thresh, corr_thresh)
 %
 % Output:
 %   CoGroup: matrix defining the co-susceptible groups; CoGroup(i,j) = 1 if
-%       component j belongs group i.
+%       component j belongs group i. Note that the function does not check
+%       if the group sizes are >= 3.
 %   G0: auxillary graph G_0; G(i,j) = 1 if C(i,j)> corr_thresh
 
 
