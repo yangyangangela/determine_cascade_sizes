@@ -6,9 +6,9 @@ function new_mpc = distri_slack(old_mpc,flag)
 % 2) if the slack bus genration <0 (dmd < gen)
 %
 % Input: 
-% flag 1: decrease generatrion evenly within same zone.
+% flag=1: decrease generatrion evenly within same zone.
 %        multiply the generator PG with rate = (dmd)/gen
-% flag 2: increase demand evenly within same zone
+%     =2: increase demand evenly within same zone
 %        multiply the demand with rate = gen/dmd
 
 % tolerence unbalanced power

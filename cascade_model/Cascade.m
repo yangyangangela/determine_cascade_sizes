@@ -78,7 +78,7 @@ ovl = check_overload(results, 0.05);
 mpc.branch(ovl, RATE_A) = abs(results.branch(ovl,PF))* 1.06;
 results = rundcpf(mpc,mpopt);
 
-% copy the data before cascade, under the given topology
+% copy the data before cascade
 rrmpc = results;
 
 
@@ -128,7 +128,7 @@ while (~isempty(ovl) > 0 && tload_dl > 0 && flag ==1) || t==1
     [mpc, T0, flag, Outlines,Proc,proctime] = propg_cascade_v2(results,ovl,T0,Outlines,Proc,dispon);
     Proc_time(t) = proctime;
     
-    % cascade propogate step
+    % cascade propogation step
     t = t + 1;
 end
 

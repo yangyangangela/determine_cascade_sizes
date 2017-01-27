@@ -85,14 +85,14 @@ filename = strcat(pathname(1:end),'_ntrg',num2str(ntrig),'_dr',num2str(dr),'_',d
 fullFileName = fullfile(foldername, filename);
 
 % clearvars filename foldername indx pathname dt;
-OtherInfo.nt = nt;
-OtherInfo.ntrig = ntrig;
-OtherInfo.sqr = sqr;
-OtherInfo.dr = dr;
-OtherInfo.tnc = tnc;
+OtherInfo.nt = nt; % total number of cascade events
+OtherInfo.ntrig = ntrig;% number of lines selected as trigger in a single event.
+OtherInfo.sqr = sqr; % squeezing ratio to adjust the capacity of lines. sqr=1: all lines have the original capacity.
+OtherInfo.dr = dr;% demand ratio. dr=1: keep demand as the original demand.
+OtherInfo.tnc = tnc;% the group of lines where trigger are selected. For advance setting, the tnc should be changed along with TStrategy in prepare_branch_data.m.
 OtherInfo.TStrategy = TStrategy;
-OtherInfo.Tinner_branch = Tinner_branch;
-GenInfo.init_mpc = rmpc;
+OtherInfo.Tinner_branch = Tinner_branch;% Advance setting with tnc and TStrategy. See prepare_branch_data.m
+GenInfo.init_mpc = rmpc;% the intial matpower structure for the grid.
 save(fullFileName, 'CasRes', 'GenInfo', 'OtherInfo');
 
 load original_path.mat orig_path

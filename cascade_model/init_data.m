@@ -1,6 +1,6 @@
 function init_data(nt,rmpc)
 % Input:
-% nr: number of interdependency points
+% rmpc: the matpower struture
 % nt: number of tests
 % Complete the following tasks
 % 1) calculate some basic properties
