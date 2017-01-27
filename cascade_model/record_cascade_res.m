@@ -27,8 +27,8 @@ CasRes.power_del = blck_info.load_dl;%power delivered
 CasRes.power_shed = blck_info.loadshed;% power shed percentage 
 CasRes.slackchange = blck_info.dslack;% change of power on slack buses
 CasRes.line_out = blck_info.lineout;% total line out number.
-CasRes.process = blck_info.process;% line outages sequence
-CasRes.proctime = blck_info.proctime;% burning time
+CasRes.process = full(blck_info.process);% line outages sequence
+CasRes.proctime = full(blck_info.proctime);% burning time
 
 CasRes.origin = blck_info.origin; % lineout origin
 
