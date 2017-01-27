@@ -126,7 +126,7 @@ while (~isempty(ovl) > 0 && tload_dl > 0 && flag ==1) || t==1
     ovl = check_overload(results,0);
     
     [mpc, T0, flag, Outlines,Proc,proctime] = propg_cascade_v2(results,ovl,T0,Outlines,Proc,dispon);
-    Proc_time(t) = proctime;
+    Proc_time(t+ntrig) = proctime;
     
     % cascade propogation step
     t = t + 1;
