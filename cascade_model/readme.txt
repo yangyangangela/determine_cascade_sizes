@@ -55,7 +55,7 @@ CasRes: a vector of struct variables of length nt, with each component correspon
   proctime: the time separation between two consecutive failures, it has the same length as process and the first ntrigger numbers are zero.
 
 
-GenInfo: a struct of general information of the power grid system
+GenInfo: a struct variable with the following fields providing general information on the power grid system being analyzed:
 
   ng: number of generators
 
@@ -70,23 +70,23 @@ GenInfo: a struct of general information of the power grid system
   init_mpc: initial matpower struct before any bugs fixed
 
 
-OtherInfo: a struct other information on the set up of simulation
+OtherInfo: a struct variable with the following fields providing other information on the simulation set up: 
 
   nt: total number of cascade events
 
-  ntrig: number of lines selected as trigger in a single event
+  ntrig: number of lines selected as the triggers in a single event
 
-  sqr: squeezing ratio to adjust the capacity of lines. Example: sqr=1 means that all lines have the original capacity.
+  sqr: squeezing ratio for adjusting the capacity of lines (where sqr=1 means that all lines have the original capacity)
 
-  dr: demand ratio. Example: dr=1 means to keep demand as the original demand.
+  dr: demand ratio (where dr=1 means to keep demand as the original demand)
 
-  tnc: the group of lines where trigger are selected. For advance setting, the tnc should be changed along with TStrategy in prepare_branch_data.m.
+  tnc: the group of lines from which the triggers are selected (advanced setting; changing tnc requires changing TStrategy in prepare_branch_data.m)
    
   TStrategy: index indicating the triggering strategy (advanced setting)
 
-  Tinner_branch: Advance setting with tnc and TStrategy. See prepare_branch_data.m
+  Tinner_branch: advanced setting with tnc and TStrategy (see prepare_branch_data.m)
 
-  init_mpc: the intial matpower structure right before the simulation of cascade starts.
+  init_mpc: the intial matpower structure right before the simulation of cascade starts
 
 
 
