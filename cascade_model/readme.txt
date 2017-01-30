@@ -67,7 +67,7 @@ GenInfo: a struct variable with the following fields providing general informati
 
   tgencap: total power capacity of all generators (in MW)
 
-  init_mpc: initial matpower struct before any bugs fixed
+  init_mpc: initial matpower struct before fixing bugs (see the comments in the file check_data.m for details)
 
 
 OtherInfo: a struct variable with the following fields providing other information on the simulation set up: 
