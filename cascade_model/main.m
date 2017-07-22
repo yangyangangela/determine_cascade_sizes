@@ -76,6 +76,8 @@ for tt = 1 : nt
 end
 
 
+
+
 %% save the results
 
 % clearvars Outlines Proc Proc_time DOFF DON inOl inld inovl nl presults rrmpc trig_origin tt blck_info;
@@ -102,5 +104,9 @@ load original_path.mat orig_path
 warning off
 path(orig_path)
 warning on
+
+
+% print out the rerouting analysis
+%%%%%%%
 
 toc;

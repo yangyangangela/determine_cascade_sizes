@@ -110,6 +110,7 @@ end
 t = 1;
 flag = 1; % mark if the cascade continues (=1) or not (=0)
 
+prev_results = mpc;
 while (~isempty(ovl) > 0 && tload_dl > 0 && flag ==1) || t==1
        
     % run test pf
@@ -125,11 +126,22 @@ while (~isempty(ovl) > 0 && tload_dl > 0 && flag ==1) || t==1
     % check and print out the overload line indices
     ovl = check_overload(results,0);
     
-    [mpc, T0, flag, Outlines,Proc,proctime] = propg_cascade_v2(results,ovl,T0,Outlines,Proc,dispon);
+    [mpc, T0, flag, Outlines,Proc,proctime, fail_index] = propg_cascade_v2(results,ovl,T0,Outlines,Proc,dispon);
     Proc_time(t+ntrig) = proctime;
+    
+    % if new line failed, do tracing
+    if ~isempty(ovl)
+        [delta_r, delta_g] = trace_flow_change(prev_results, results, fail_index);
+    end
     
     % cascade propogation step
     t = t + 1;
+    
+    %
+    prev_results = results;
+    
+    
+    
 end
 
 

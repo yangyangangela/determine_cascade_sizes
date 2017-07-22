@@ -1,4 +1,4 @@
-function [new_mpc, new_T0, flag,Outlines,new_Proc,t2b] = propg_cascade_v2(mpc,ovl,T0,Outlines,Proc,dispon)
+function [new_mpc, new_T0, flag,Outlines,new_Proc,t2b, fail_index] = propg_cascade_v2(mpc,ovl,T0,Outlines,Proc,dispon)
 % cut off the line which reaches the critical temperature first
 % update the temperature of all other lines
 
@@ -13,6 +13,7 @@ function [new_mpc, new_T0, flag,Outlines,new_Proc,t2b] = propg_cascade_v2(mpc,ov
 % flag = 1: contine propagating, 0:stop here
 % new_Proc: sparse vector containing the burned line in sequence
 % t2b: the time between the previous burned line to next burned line
+% fail_index: the index of the failed line
 
 
 new_mpc = mpc;
@@ -62,6 +63,9 @@ else
     
     % cut off the line
     [new_mpc Outlines] = cutoff_line(new_mpc,ovl(ind),Outlines);
+    
+    % the index of failed line
+    fail_index=ovl(ind);
     
     % record the process
     pt = find(new_Proc==0,1);
