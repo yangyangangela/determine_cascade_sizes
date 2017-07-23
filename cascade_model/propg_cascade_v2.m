@@ -15,6 +15,7 @@ function [new_mpc, new_T0, flag,Outlines,new_Proc,t2b, fail_index] = propg_casca
 % t2b: the time between the previous burned line to next burned line
 % fail_index: the index of the failed line
 
+fail_index = nan;
 
 new_mpc = mpc;
 new_T0 = T0;

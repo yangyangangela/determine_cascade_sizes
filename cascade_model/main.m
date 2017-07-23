@@ -68,11 +68,12 @@ DON = 1; DOFF = 0;
 % run the cascade model nt times.
 for tt = 1 : nt
     disp(strcat('=== test #',num2str(tt),' ==='));
-    [results, inovl, inOl, inld, trig_origin,Outlines,Proc,Proc_time,rrmpc]...
+    [results, inovl, inOl, inld, trig_origin,Outlines,Proc,Proc_time,rrmpc, tracing_res]...
         = Cascade(sqr, dr, DOFF,rmpc,ntrig,Tinner_branch,branch_comm,TStrategy,tnc);
     blck_info = ...
         check_blackout(results,inovl,trig_origin,Outlines,Proc,Proc_time,rrmpc);
     CasRes(tt) = record_cascade_res(blck_info,DON);
+    TracRes(tt) = tracing_res;
 end
 
 
@@ -98,15 +99,12 @@ OtherInfo.tnc = tnc;% the group of lines where trigger are selected. For advance
 OtherInfo.TStrategy = TStrategy;
 OtherInfo.Tinner_branch = Tinner_branch;% Advance setting with tnc and TStrategy. See prepare_branch_data.m
 GenInfo.init_mpc = rmpc;% the intial matpower structure for the grid.
-save(fullFileName, 'CasRes', 'GenInfo', 'OtherInfo');
+save(fullFileName, 'CasRes', 'GenInfo', 'OtherInfo', 'TracRes');
 
 load original_path.mat orig_path
 warning off
 path(orig_path)
 warning on
 
-
-% print out the rerouting analysis
-%%%%%%%
 
 toc;
