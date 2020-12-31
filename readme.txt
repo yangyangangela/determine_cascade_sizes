@@ -1,5 +1,5 @@
 ———————————————————————————————————————————————————————————————————————————————————
- Simulation of physical cascade model and identification of co-susceptibile groups
+ Simulation of physical cascade model and identification of co-susceptible groups
 ———————————————————————————————————————————————————————————————————————————————————
 
 Copyright (C) 2016  Yang Yang
